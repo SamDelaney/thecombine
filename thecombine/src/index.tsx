@@ -1,17 +1,31 @@
+//external modules
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { renderToStaticMarkup } from "react-dom/server";
 
-import "./index.css";
-
+//TC modules
 import App from "./components/App/App";
 import * as serviceWorker from "./serviceWorker";
 import { store } from "./store";
+import { LocalizeProvider } from "react-localize-redux";
+
+//additional files
+import "./index.css";
+import globalTranslations from "./resources/translations.json";
+
+const localizeInit = {
+  languages: [{ name: "English", code: "en" }, { name: "French", code: "fr" }],
+  translation: globalTranslations,
+  options: { renderToStaticMarkup }
+};
 
 //Provider connects store to component containers
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <LocalizeProvider store={store} initialize={localizeInit}>
+      <App />
+    </LocalizeProvider>
   </Provider>,
   document.getElementById("root")
 );
