@@ -28,24 +28,25 @@ namespace BackendFramework.Services
             _wordDatabase = collectionSettings;
         }
       
-        async Task<List<Word>> IWordService.GetAllWords()
+        public async Task<List<Word>> GetAllWords()
         {
             return await _wordDatabase.Words.Find(_ => true).ToListAsync();
         }
 
-        async Task<List<Word>> IWordService.GetWord(string identificaton)
+        public async Task<List<Word>> GetWord(string identificaton)
         {
             var cursor = await _wordDatabase.Words.FindAsync(x => x.Id == identificaton);
             return cursor.ToList();
         }
 
-        async Task IWordService.Create(Word word)
+        public async Task<Word> Create(Word word)
         {
             await _wordDatabase.Words.InsertOneAsync(word);
+            return word;
             
         }
 
-        async Task<bool> IWordService.Delete(string Id)
+        public async Task<bool> Delete(string Id)
         {
             var deleted = await _wordDatabase.Words.DeleteOneAsync(Id);
             return deleted.DeletedCount > 0;

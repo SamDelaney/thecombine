@@ -41,7 +41,7 @@ namespace BackendFramework
             options.Database = Configuration.GetSection("DatabaseAddr").Value;
         });
 
-            services.AddTransient<WordContext, WordContext>();
+            services.AddTransient<IWordContext, WordContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -11,7 +11,7 @@ namespace BackendFramework.WordService
     {
         Task<List<Word>> GetAllWords();
         Task<List<Word>> GetWord(string Id);
-        Task Create(Word word);
+        Task<Word> Create(Word word);
         Task<bool> Update(string Id);
         Task<bool> Delete(string Id);
     }
