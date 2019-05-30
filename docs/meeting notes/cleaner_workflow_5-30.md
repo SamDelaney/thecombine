@@ -32,7 +32,13 @@ Each `task` is broken down into `units`. The units are ordered within a task as 
 - Optionally merging any duplicates found in the database.
 - An optional spot testing unit to evaluate the quality of the data corpus.
 
-Withi each `unit` are one or more `exercises` which break up the `unit` into manageably sized chunks of work.
+Within each `unit` are one or more `exercises` which break up the `unit` into manageably sized chunks of work.
+
+The ordering within this structure will be simple to begin. If we have enough time, we can devote time to making more complex orders based on:
+
+- Better Workflow
+- Qualitative Productivity
+- Quantitative Productivity
 
 Here is a collection of sketches that we took to get to that point.
 ![Sketches](./5-30_images/sketches.jpg)
