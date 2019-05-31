@@ -13,11 +13,26 @@ import { LocalizeProvider } from "react-localize-redux";
 //additional files
 import globalTranslations from "./resources/translations.json";
 
+import axios from "axios";
+
 const localizeInit = {
   languages: [{ name: "English", code: "en" }, { name: "Spanish", code: "es" }],
   translation: globalTranslations,
   options: { renderToStaticMarkup }
 };
+
+var server = axios.create({
+  baseURL: "https://localhost:5001/v1",
+  timeout: 1000,
+  headers: { "Content-Type": "application/json" }
+});
+
+server.post("/collection", {
+  Vernacular: "test",
+  Gloss: "test2",
+  Audio: "sound",
+  Timestamp: "now"
+});
 
 //Provider connects store to component containers
 ReactDOM.render(
