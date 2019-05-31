@@ -1,5 +1,7 @@
+//external modules
 import React from "react";
-import "./App.css";
+
+//TC modules
 import Temp from "../Temp";
 
 const App: React.FC = () => {
