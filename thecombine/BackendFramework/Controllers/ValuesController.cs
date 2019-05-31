@@ -42,8 +42,8 @@ namespace BackendFramework.Controllers
         public async Task<IActionResult> Post([FromBody]Word word) //tskes the word content from the http req body not from the path or 
         {
             Console.WriteLine("Post: " + word);
-            //await _wordService.Create(word);
-            return new OkObjectResult("");
+            await _wordService.Create(word);
+            return new OkObjectResult(word.Id);
         }
 
         // PUT: v1/collection/5
