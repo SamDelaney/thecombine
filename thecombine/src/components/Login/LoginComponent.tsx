@@ -61,20 +61,24 @@ class Login extends React.Component<
       <Grid container justify="center">
         <form onSubmit={evt => this.login(evt)}>
           <TextField
-            label={"Username"}
+            label={<Translate id="login.username" />}
             value={this.state.user}
             onChange={evt => this.updateUser(evt)}
           />
           <br />
           <TextField
-            label={"Password"}
+            label={<Translate id="login.password" />}
             type="password"
             value={this.state.password}
             onChange={evt => this.updatePassword(evt)}
           />
           <br />
-          <Button onSubmit={_ => this.register()}> Register </Button>
-          <Button type="submit">Login</Button>
+          <Button onSubmit={_ => this.register()}>
+            <Translate id="login.register" />
+          </Button>
+          <Button type="submit">
+            <Translate id="login.login" />
+          </Button>
         </form>
       </Grid>
     );
