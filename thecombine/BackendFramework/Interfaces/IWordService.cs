@@ -11,8 +11,15 @@ namespace BackendFramework.Interfaces
     {
         Task<List<Word>> GetAllWords();
         Task<List<Word>> GetWord(string Id);
+
+        Task<List<Word>> GetWords(System.Linq.Expressions.Expression<Func<Word, bool>> filter);
         Task<Word> Create(Word word);
         Task<bool> Update(string Id);
         Task<bool> Delete(string Id);
+        Task<bool> DeleteAllWords();
+
+        Task<List<Word>> GetFrontier();
+        Task<Word> AddFrontier(Word word);
+        Task<bool> DeleteFrontier(string id);
     }
 }
