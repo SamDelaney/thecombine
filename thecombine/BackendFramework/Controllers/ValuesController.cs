@@ -85,6 +85,7 @@ namespace BackendFramework.Controllers
         {
             Console.WriteLine("Post: " + word);
             await _wordService.Create(word);
+            await _wordService.AddFrontier(word);
             return new OkObjectResult(word.Id);
         }
 
@@ -127,9 +128,9 @@ namespace BackendFramework.Controllers
                     await _wordService.Create(newParent);
 
                     //upadate fronteir
-                    //fronteir.remove(child);
-                    //fronteir.remove(parent);
-                    //fronteir.add(newParent);
+                    await _wordService.DeleteFrontier(child.Id);
+                    await _wordService.DeleteFrontier(parent.Id);
+                    await _wordService.AddFrontier(newParent);
                 }
             }catch (Exception)
             {
