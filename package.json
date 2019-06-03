@@ -1,0 +1,10 @@
+{
+  "name": "thecombine",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "cd ./thecombine && npm start",
+    "build": "cd ./thecombine && npm run build",
+    "test": "cd ./thecombine && npm run test",
+    "eject": "cd ./thecombine && npm run eject"
+  }
+}
