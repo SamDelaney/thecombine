@@ -32,32 +32,6 @@ namespace BackendFramework.Controllers
         {
             return new ObjectResult(await _wordService.GetAllWords());
         }
-
-        // GET: v1/project/words/frontier
-        [HttpGet("frontier")]
-        public async Task<IActionResult> GetFrontier()
-        {
-            return new ObjectResult(await _wordService.GetFrontier());
-        }
-
-        [HttpPost("frontier")]
-        public async Task<IActionResult> PostFrontier([FromBody]Word word)
-        {
-            await _wordService.AddFrontier(word);
-            return new OkObjectResult(word.Id);
-        }
-
-        [HttpDelete("frontier/{Id}")]
-        public async Task<IActionResult> DeleteFrontier(string Id)
-        {
-            if (await _wordService.DeleteFrontier(Id))
-            {
-                return new OkResult();
-            }
-
-            return new NotFoundResult();
-        }
-
         [HttpDelete]
         public async Task<IActionResult> Delete()
         {
@@ -132,9 +106,10 @@ namespace BackendFramework.Controllers
                     await _wordService.DeleteFrontier(parent.Id);
                     await _wordService.AddFrontier(newParent);
                 }
-            }catch (Exception)
+            }
+            catch (Exception)
             {
-                return new NotFoundResult() ;
+                return new NotFoundResult();
             }
 
             return new OkResult();
