@@ -9,8 +9,12 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Input from "@material-ui/core/Input";
 import { Grid } from "@material-ui/core";
+import { asyncLogin, asyncRegister } from "./LoginActions";
 
-export interface LoginProps {}
+export interface LoginProps {
+  login?: (user: string, password: string) => void;
+  register?: (user: string, password: string) => void;
+}
 
 interface LoginState {
   user: string;
@@ -48,11 +52,15 @@ class Login extends React.Component<
 
   login(e: React.FormEvent<EventTarget>) {
     e.preventDefault();
-    console.log("TODO: Implement login");
+    if (this.props.login) {
+      this.props.login(this.state.user, this.state.password);
+    }
   }
 
   register() {
-    console.log("TODO: Implement register");
+    if (this.props.register) {
+      this.props.register(this.state.user, this.state.password);
+    }
   }
 
   render() {
@@ -73,7 +81,7 @@ class Login extends React.Component<
             onChange={evt => this.updatePassword(evt)}
           />
           <br />
-          <Button onSubmit={_ => this.register()}>
+          <Button onClick={_ => this.register()}>
             <Translate id="login.register" />
           </Button>
           <Button type="submit">
