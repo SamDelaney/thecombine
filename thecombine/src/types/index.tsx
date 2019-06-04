@@ -3,11 +3,13 @@ import { ThunkAction, ThunkDispatch } from "redux-thunk";
 import { TempState } from "../components/Temp/TempReducer";
 import { TempAction } from "../components/Temp/TempActions";
 import { LocalizeState } from "react-localize-redux";
+import { LoginState } from "../components/Login/LoginReducer";
 
 //root store structure
 export interface StoreState {
   localize: LocalizeState;
   tempState: TempState;
+  loginState: LoginState;
 }
 
 //root action type
